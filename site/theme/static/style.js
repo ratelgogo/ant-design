@@ -1,3 +1,4 @@
+import 'react-github-button/assets/style.css';
 import './common.less';
 import './header.less';
 import './footer.less';
