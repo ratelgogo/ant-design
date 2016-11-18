@@ -29,8 +29,6 @@ export { default as Card } from './card';
 
 export { default as Collapse } from './collapse';
 
-export { default as Carousel } from './carousel';
-
 export { default as Cascader } from './cascader';
 
 export { default as Checkbox } from './checkbox';

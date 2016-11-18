@@ -33,6 +33,7 @@
   "typings": "lib/index.d.ts",
   "license": "MIT",
   "dependencies": {
+    "antd-demo-jest": "^1.0.3",
     "array-tree-filter": "~1.0.0",
     "babel-runtime": "6.x",
     "classnames": "~2.2.0",
@@ -78,6 +79,7 @@
   "devDependencies": {
     "@types/react": "~0.14.41",
     "@types/react-dom": "~0.14.18",
+    "antd-demo-jest": "^1.0.2",
     "antd-tools": "0.14.2",
     "babel-eslint": "^7.1.0",
     "babel-jest": "^17.0.0",
@@ -103,6 +105,7 @@
     "eslint-plugin-markdown": "*",
     "eslint-plugin-react": "^6.1.2",
     "eslint-tinker": "^0.4.0",
+    "glob": "^7.1.1",
     "history": "^4.4.0",
     "jest": "^17.0.1",
     "jest-cli": "^17.0.0",
@@ -139,17 +142,13 @@
     "demolint": "RUN_ENV=DEMO eslint components/*/demo/*.md --ext '.md'",
     "lesshint": "lesshint components -r scripts/lesshint-report.js",
     "eslint-fix": "eslint --fix test site scripts ./.eslintrc.js ./webpack.config.js --ext '.js,.jsx,.tsx' --ignore-pattern '!.eslintrc.js' && eslint-tinker ./components/*/demo/*.md",
-
     "jest": "jest --no-cache",
-
     "clean": "antd-tools run clean",
     "dist": "antd-tools run dist && node ./tests/dekko/dist.test.js",
     "compile": "antd-tools run compile && node ./tests/dekko/lib.test.js",
-
     "start": "bisheng start -c ./site/bisheng.config.js --no-livereload",
     "site": "bisheng build -c ./site/bisheng.config.js",
     "deploy": "npm run clean && bisheng gh-pages -c ./site/bisheng.config.js",
-
     "pub": "antd-tools run update-self && antd-tools run pub",
     "prepublish": "antd-tools run guard",
     "pre-publish": "node ./scripts/prepub",
@@ -161,7 +160,8 @@
       "tsx",
       "js",
       "jsx",
-      "json"
+      "json",
+      "md"
     ],
     "modulePathIgnorePatterns": [
       "/_site/"
@@ -171,7 +171,8 @@
       "/node_modules/"
     ],
     "transform": {
-      ".*": "node_modules/typescript-babel-jest"
+      "\\.(tsx?|jsx?)$": "node_modules/typescript-babel-jest",
+      "\\.md$": "node_modules/antd-demo-jest"
     },
     "testRegex": "(/tests/.*|\\.(test|spec))\\.(js)$"
   },
